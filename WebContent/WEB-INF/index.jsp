@@ -1,14 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page pageEncoding="UTF-8" %>
 
-<!DOCTYPE html>
-<html lang="ja">
-
 	<jsp:include page="header.jsp" />
-
-	<div class="container">
 	
-		<jsp:include page="pop-up.jsp" />
+	<jsp:include page="pop-up.jsp" />
 		
 		<table class="table">
 			<tr>
@@ -51,8 +46,4 @@
 				<a href="entry.html" class="btn btn-primary"><span class="glyphicon glyphicon" aria-hidden="true"></span>追加</a>
 		</div>
 
-		</div><!-- /container -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-	</body>
-</html>
+		<jsp:include page="footer.jsp" />
