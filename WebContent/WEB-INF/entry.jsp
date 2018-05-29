@@ -6,7 +6,6 @@
 
 	<jsp:include page="header.jsp" />
 
-
 	<div class="container">
 	
 		<jsp:include page="pop-up.jsp" />

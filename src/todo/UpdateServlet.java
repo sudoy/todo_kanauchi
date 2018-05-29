@@ -14,7 +14,7 @@ public class UpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		getServletContext().getRequestDispatcher("/update.jsp")
+		getServletContext().getRequestDispatcher("/WEB-INF/update.jsp")
 				.forward(req, resp);
 
 	}
