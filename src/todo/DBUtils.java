@@ -15,7 +15,7 @@ public class DBUtils extends HttpServlet {
 		//データベースの接続を確立
 		Context initContext = new InitialContext();
 		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/mysql");
+		DataSource ds = (DataSource) envContext.lookup("todolist_kanauchi");
 
 		return ds.getConnection();
 	}

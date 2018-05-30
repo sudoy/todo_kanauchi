@@ -16,9 +16,36 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		req.setCharacterEncoding("utf-8");
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = null;
+		ResultSet rs = null;
+
+		try {
+						
+			con = DBUtils.getConnection();
+				
+			sql = "select id, title, star, deadline from todo order by id;";
+			//select命令の準備
+			ps = con.prepareStatement(sql);
+
+			//select命令を実行
+			rs = ps.executeQuery();
+			
+			req.setAttribute("rs", rs);
 
 			getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
-					.forward(req, resp);
+				.forward(req, resp);
 
+		} catch (Exception e) {
+			throw new ServletException(e);
+		} finally {
+			try {
+				if (rs != null) {rs.close();}
+				if (ps != null) {ps.close();}
+			} catch (Exception e) {}
+		}
 	}
 }
