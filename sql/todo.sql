@@ -1,7 +1,7 @@
 CREATE TABLE todo(
 id int AUTO_INCREMENT not null PRIMARY KEY ,
 title varchar(100) not null,
-note varchar(300) not null,
+note varchar(255) not null,
 star varchar(10) not null,
 deadline date
 );

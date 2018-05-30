@@ -5,7 +5,7 @@
 	
 	<jsp:include page="pop-up.jsp" />
 		
-		<p><strong>登録フォーム</strong></p>
+		<h4><strong>登録フォーム</strong></h4>
 		<hr>
 		
 		<div class="form-group">
@@ -44,7 +44,7 @@
 
 
 		<div class="form-group">
-		<div class="col-sm-offset-2">
+		<div class="col-sm-offset-2 col-sm-10">
 			<a href="index.html" class="btn btn-default"><span class="glyphicon glyphicon" aria-hidden="true"></span>キャンセル</a>
 			<a href="index.html" class="btn btn-primary"><span class="glyphicon glyphicon" aria-hidden="true"></span>追加</a>
 			</div>

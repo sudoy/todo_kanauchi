@@ -1,6 +1,9 @@
 package todo;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/index.html")
 public class IndexServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
-			.forward(req, resp);
+
+			getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
+					.forward(req, resp);
+
 	}
 }
