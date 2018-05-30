@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import todo.utils.DBUtils;
+
 @WebServlet("/index.html")
 public class IndexServlet extends HttpServlet {
 	@Override
@@ -23,11 +25,11 @@ public class IndexServlet extends HttpServlet {
 		String sql = null;
 		ResultSet rs = null;
 
-		try {
-						
+		try {		
 			con = DBUtils.getConnection();
 				
 			sql = "select id, title, star, deadline from todo order by id;";
+			
 			//select命令の準備
 			ps = con.prepareStatement(sql);
 
