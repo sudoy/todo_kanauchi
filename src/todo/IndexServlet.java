@@ -18,31 +18,38 @@ import todo.utils.DBUtils;
 
 @WebServlet("/index.html")
 public class IndexServlet extends HttpServlet {
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
+				.forward(req, resp);
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+
 		req.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
 		ResultSet rs = null;
 
-		try {		
+		try {
 			con = DBUtils.getConnection();
-				
-			sql = "select id, title, star, note, deadline from todo order by id;";
-			
+
+			sql = "select id, title,  note, star, deadline from todo order by id;";
+
 			//select命令の準備
 			ps = con.prepareStatement(sql);
 
 			//select命令を実行
 			rs = ps.executeQuery();
-			
-			List<Todo> list =new ArrayList<>();			
-			while(rs.next()) {
-				Todo t = new Todo (
+
+			List<Todo> list = new ArrayList<>();
+			while (rs.next()) {
+				Todo t = new Todo(
 						rs.getInt("id"),
 						rs.getString("title"),
 						rs.getString("note"),
@@ -50,19 +57,24 @@ public class IndexServlet extends HttpServlet {
 						rs.getDate("deadline"));
 				list.add(t);
 			}
-			
+
 			req.setAttribute("list", list);
 
 			getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
-				.forward(req, resp);
+					.forward(req, resp);
 
 		} catch (Exception e) {
 			throw new ServletException(e);
 		} finally {
 			try {
-				if (rs != null) {rs.close();}
-				if (ps != null) {ps.close();}
-			} catch (Exception e) {}
+				if (rs != null) {
+					rs.close();
+				}
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception e) {
+			}
 		}
 	}
 }

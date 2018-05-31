@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HTMLUtils {
-	public static String dateFormat(Date deadline) {
+	public static String dateformat(Date deadline) {
 
 		String s = "";
 		if(deadline == null) {

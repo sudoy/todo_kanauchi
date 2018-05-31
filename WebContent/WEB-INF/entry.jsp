@@ -26,18 +26,18 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">重要度</label>
 				<div class="radio">
-					　<label><input type="radio" name="star" value="3" checked>★★★</label><br>
+					　<label><input type="radio" name="star" value="★★★" checked>★★★</label><br>
 					<label for="name" class="col-sm-2 control-label"></label>
-					　<label><input type="radio" name="star" value="2">★★</label><br>
+					　<label><input type="radio" name="star" value="★★">★★</label><br>
 					<label for="name" class="col-sm-2 control-label"></label>
-					　<label><input type="radio" name="star" value="1">★</label>
+					　<label><input type="radio" name="star" value="★">★</label>
 				</div>
 		</div>
 		
 		<div class="form-group">
  			<label for="note" class="col-sm-2 control-label">期限</label>
  			<div class="col-sm-10">
-				<input type="text" class="form-control" name="title" placeholder="期限">
+				<input type="text" class="form-control" name="deadline" placeholder="期限">
 			</div>
 		</div>
 
@@ -46,7 +46,7 @@
 		<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<a href="index.html" class="btn btn-default"><span class="glyphicon glyphicon" aria-hidden="true"></span>キャンセル</a>
-			<a href="index.html" class="btn btn-primary"><span class="glyphicon glyphicon" aria-hidden="true"></span>追加</a>
+			<input type="submit" class="btn btn-primary" value="追加"/>
 			</div>
 		</div>
 		

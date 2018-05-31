@@ -1,13 +1,7 @@
-<%@page import="javax.sql.DataSource"%>
-<%@page import="javax.naming.InitialContext"%>
-<%@page import="javax.naming.Context"%>
-<%@page import="todo.utils.HTMLUtils"%>
-
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="java.sql.*"%>
+<%@page import="todo.utils.HTMLUtils"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="_header.jsp" />
 
@@ -26,7 +20,7 @@
 			<td>${todo.id}</td>
 			<td><a href="update.html">${todo.title}</a></td>
 			<td>${todo.star}</td>
-			<td>${HTMLUtils.dateFormat(todo.deadline)}</td>
+			<td>${HTMLUtils.dateformat(todo.deadline)}</td>
 		</tr>
 		
 	</c:forEach>
