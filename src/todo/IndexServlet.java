@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import todo.beans.Todo;
 import todo.utils.DBUtils;
 
 @WebServlet("/index.html")
 public class IndexServlet extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -28,7 +32,7 @@ public class IndexServlet extends HttpServlet {
 		try {		
 			con = DBUtils.getConnection();
 				
-			sql = "select id, title, star, deadline from todo order by id;";
+			sql = "select id, title, star, note, deadline from todo order by id;";
 			
 			//select命令の準備
 			ps = con.prepareStatement(sql);
@@ -36,7 +40,18 @@ public class IndexServlet extends HttpServlet {
 			//select命令を実行
 			rs = ps.executeQuery();
 			
-			req.setAttribute("rs", rs);
+			List<Todo> list =new ArrayList<>();			
+			while(rs.next()) {
+				Todo t = new Todo (
+						rs.getInt("id"),
+						rs.getString("title"),
+						rs.getString("note"),
+						rs.getString("star"),
+						rs.getDate("deadline"));
+				list.add(t);
+			}
+			
+			req.setAttribute("list", list);
 
 			getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
 				.forward(req, resp);

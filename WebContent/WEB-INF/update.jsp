@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page pageEncoding="UTF-8" %>
 
-	<jsp:include page="header.jsp" />
+	<jsp:include page="_header.jsp" />
 	
-	<jsp:include page="pop-up.jsp" />
+	<jsp:include page="_pop-up.jsp" />
 
 		<h4><strong>更新フォーム</strong></h4>
 		<hr>
@@ -53,4 +53,4 @@
 			</div>	
 		</div>
 		
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="_footer.jsp" />
