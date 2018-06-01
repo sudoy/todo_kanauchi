@@ -39,18 +39,18 @@ public class UpdateServlet extends HttpServlet {
 
 			//select命令を実行
 			rs = ps.executeQuery();
-			
+
 			System.out.println(ps);
 
 			rs.next();
 
-					int id = rs.getInt("id");
-					String title = rs.getString("title");
-					String note = rs.getString("note");
-					String star = rs.getString("star");
-					Date deadline = rs.getDate("deadline");
+			int id = rs.getInt("id");
+			String title = rs.getString("title");
+			String note = rs.getString("note");
+			String star = rs.getString("star");
+			Date deadline = rs.getDate("deadline");
 
-				Todo todo = new Todo(id, title, note, star, deadline);
+			Todo todo = new Todo(id, title, note, star, deadline);
 			req.setAttribute("todo", todo);
 
 			//JSPへフォワード
@@ -73,10 +73,11 @@ public class UpdateServlet extends HttpServlet {
 			}
 		}
 	}
+
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+
 		resp.sendRedirect("index.html");
 	}
 }
