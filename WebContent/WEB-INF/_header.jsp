@@ -12,7 +12,7 @@
 
 	</head>
 	<body>
-	<form class="form-horizontal" action="#" method="post">
+
 <nav class="navbar navbar-default">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->

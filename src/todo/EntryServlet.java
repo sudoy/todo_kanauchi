@@ -102,7 +102,7 @@ public class EntryServlet extends HttpServlet {
 			errors.add("題名は100文字以内にしてください。");
 		}
 		
-		//日付フォーマット
+		//日付フォーマットs
 		if(!deadline.equals("")) {
 			try {
 				LocalDate.parse(deadline, DateTimeFormatter.ofPattern("uuuu/MM/dd")

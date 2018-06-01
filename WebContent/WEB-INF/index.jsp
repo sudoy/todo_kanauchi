@@ -10,7 +10,7 @@
 <table class="table">
 	<tr>
 		<th>#</th>
-		<th>題名</th>
+		<th>題名</th>s
 		<th>重要度</th>
 		<th>期限</th>
 	</tr>
@@ -18,7 +18,7 @@
 	<c:forEach var="todo" items="${list}" varStatus="t">
 		<tr>
 			<td>${todo.id}</td>
-			<td><a href="update.html">${todo.title}</a></td>
+			<td><a href="update.html?id=${todo.id }">${todo.title}</a></td>
 			<td>${todo.star}</td>
 			<td>${HTMLUtils.dateformat(todo.deadline)}</td>
 		</tr>

@@ -1,6 +1,6 @@
 package todo.beans;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Todo {
 

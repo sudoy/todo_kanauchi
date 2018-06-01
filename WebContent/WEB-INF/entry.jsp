@@ -6,6 +6,8 @@
 	
 	<jsp:include page="_pop-up.jsp" />
 		
+	<form class="form-horizontal" action="#" method="post">
+
 		<h4><strong>登録フォーム</strong></h4>
 		<hr>
 		
@@ -65,5 +67,5 @@
 				<input type="submit" class="btn btn-primary" value="追加"/>
 			</div>
 		</div>
-		
+	</form>
 		<jsp:include page="_footer.jsp" />
