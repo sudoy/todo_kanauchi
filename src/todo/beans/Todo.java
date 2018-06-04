@@ -17,6 +17,9 @@ public class Todo {
 		this.star = star;
 		this.deadline = deadline;
 	}
+	public Todo() {
+		
+	}
 	public int getId() {
 		return id;
 	}

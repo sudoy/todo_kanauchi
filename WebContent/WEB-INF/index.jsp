@@ -22,7 +22,6 @@
 			<td>${todo.star}</td>
 			<td>${HTMLUtils.dateformat(todo.deadline)}</td>
 		</tr>
-
 	</c:forEach>
 
 </table>

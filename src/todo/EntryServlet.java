@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import todo.utils.DBUtils;
 
@@ -34,6 +35,7 @@ public class EntryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
 
 		String title = req.getParameter("title");
 		String note = req.getParameter("note");
@@ -44,6 +46,7 @@ public class EntryServlet extends HttpServlet {
 		List<String> errors = validate(title, deadline, star);
 		if (errors.size() > 0) {
 			req.setAttribute("errors", errors);
+			session.setAttribute("errors", errors);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 			return;
 		}
@@ -55,7 +58,7 @@ public class EntryServlet extends HttpServlet {
 		try {
 			con = DBUtils.getConnection();
 
-			sql = "insert into todo (title, note, star, deadline) values (?, ?, ?, ?)";
+			sql = "update todo set title=? note=? star=? deadline=?";
 			ps = con.prepareStatement(sql);
 
 			ps.setString(1, title);
@@ -68,8 +71,11 @@ public class EntryServlet extends HttpServlet {
 			}
 
 			ps.executeUpdate();
+			
+			List<String> successes = new ArrayList<>();
+			successes.add("登録しました。");
+			session.setAttribute("successes", successes);
 
-			//index.htmlへ遷移
 			resp.sendRedirect("index.html");
 
 		} catch (Exception e) {

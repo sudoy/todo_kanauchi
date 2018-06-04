@@ -8,8 +8,7 @@
 
 <jsp:include page="_pop-up.jsp" />
 
-<form class="form-horizontal" action="update.html?id=${todo.id}"
-	method="post">
+<form class="form-horizontal" action="update.html?id=${param.id != null ? param.id : todo.id}" method="post">
 
 	<h4>
 		<strong>更新フォーム</strong>
@@ -17,17 +16,17 @@
 	<hr>
 
 	<div class="form-group">
-		<label for="note" class="col-sm-2 control-label">題名</label>
+		<label for="title" class="col-sm-2 control-label">題名</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" name="title"
-				value="${todo.title}" placeholder="題名">
+				value="${param.title != null ? param.title : todo.title}" placeholder="題名">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="note" class="col-sm-2 control-label">詳細</label>
 		<div class="col-sm-10">
-			<textarea class="form-control" name="note" rows="3" placeholder="詳細">${todo.note}</textarea>
+			<textarea class="form-control" name="note" rows="3" placeholder="詳細">${param.note != null ? param.note : todo.note}</textarea>
 		</div>
 	</div>
 
@@ -35,22 +34,19 @@
 	<div class="form-group">
 		<label for="name" class="col-sm-2 control-label">重要度</label>
 		<div class="radio">
-			<label><input type="radio" name="star" value="${todo.star}"
-				${HTMLUtils.checkStar(todo.star, '★★★')}>★★★</label><br> <label
-				for="name" class="col-sm-2 control-label"></label> <label><input
-				type="radio" name="star" value="${todo.star}"
-				${HTMLUtils.checkStar(todo.star, '★★')}>★★</label><br> <label
-				for="name" class="col-sm-2 control-label"></label> <label><input
-				type="radio" name="star" value="${todo.star}"
-				${HTMLUtils.checkStar(todo.star, '★')}>★</label>
+				<label><input type="radio" name="star" value="★★★" ${HTMLUtils.checkStar(param.star != null ? param.star : todo.star, '★★★')}>★★★</label><br> 
+				<label for="name" class="col-sm-2 control-label"></label> 
+				<label><input type="radio" name="star" value="★★" ${HTMLUtils.checkStar(param.star != null ? param.star : todo.star, '★★')}>★★</label><br>
+				<label for="name" class="col-sm-2 control-label"></label> 
+				<label><input type="radio" name="star" value="★" ${HTMLUtils.checkStar(param.star != null ? param.star : todo.star, '★')}>★</label>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="note" class="col-sm-2 control-label">期限</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" name="title"
-				value="${HTMLUtils.dateformat(todo.deadline)}" placeholder="期限">
+			<input type="text" class="form-control" name="deadline" placeholder="期限"
+				value="${param.deadline != null ? param.deadline : HTMLUtils.dateformat(todo.deadline)}">
 		</div>
 	</div>
 
@@ -59,13 +55,11 @@
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-8">
 			<a href="index.html" class="btn btn-default"><span
-				class="glyphicon glyphicon" aria-hidden="true"></span>キャンセル</a> <a
-				href="index.html" class="btn btn-primary"><span
-				class="glyphicon glyphicon" aria-hidden="true"></span>更新</a>
+				class="glyphicon glyphicon" aria-hidden="true"></span>キャンセル</a> 
+			<input type="submit" class="btn btn-primary" value="更新">
 		</div>
-		<div class="col-sm-offset-4">
-			<a href="index.html" class="btn btn-danger" align="right"><span
-				class="glyphicon glyphicon" aria-hidden="true"></span>削除</a>
+		<div class="col-sm-2 text-right">
+			<a href="delete.html?id=${todo.id}" class="btn btn-danger">削除</a>
 		</div>
 	</div>
 </form>
