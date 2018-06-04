@@ -45,7 +45,6 @@ public class EntryServlet extends HttpServlet {
 		//バリデーションチェック
 		List<String> errors = validate(title, deadline, star);
 		if (errors.size() > 0) {
-			req.setAttribute("errors", errors);
 			session.setAttribute("errors", errors);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 			return;
@@ -58,7 +57,7 @@ public class EntryServlet extends HttpServlet {
 		try {
 			con = DBUtils.getConnection();
 
-			sql = "update todo set title=? note=? star=? deadline=?";
+			sql = "insert into todo(title, note, star, deadline) value(?, ?, ?, ?)";
 			ps = con.prepareStatement(sql);
 
 			ps.setString(1, title);
@@ -71,7 +70,7 @@ public class EntryServlet extends HttpServlet {
 			}
 
 			ps.executeUpdate();
-			
+
 			List<String> successes = new ArrayList<>();
 			successes.add("登録しました。");
 			session.setAttribute("successes", successes);
@@ -126,5 +125,3 @@ public class EntryServlet extends HttpServlet {
 		return errors;
 	}
 }
-
-

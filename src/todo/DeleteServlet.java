@@ -24,7 +24,6 @@ public class DeleteServlet extends HttpServlet {
 
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
-
 		String id = req.getParameter("id");
 
 		//バリデーションチェック
