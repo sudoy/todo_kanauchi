@@ -15,21 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import todo.beans.Todo;
 import todo.utils.DBUtils;
+import todo.utils.HTMLUtils;
 
 @WebServlet("/index.html")
 public class IndexServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-
-		getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
-				.forward(req, resp);
-	}
-
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
+		
+		//ログインチェック
+		if(!HTMLUtils.checkLogin(req, resp)) {
+			return;
+		}
+		
 		req.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement ps = null;

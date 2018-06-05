@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Todoリスト | ログイン</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="todo.css" rel="stylesheet">
+
+
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+<nav class="navbar navbar-default">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#global-nav" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html">Todoリスト</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+	<div class="alert alert-danger" alert-dismiss" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>エラーが発生しました！</strong><br>
+		<ul>
+			<li>メールアドレスまたはパスワードが間違っています。</li>
+		</ul>
+	</div>	
+	
+		<form class="form-horizontal" action="#" method="post">
+			<div class="form-group">
+				<label for="exampleInputEmail1">メールアドレス</label>
+				<input type="email" class="form-control" id="inputemail" placeholder="メールアドレス">
+			</div>
+			
+			<div class="form-group">
+				<label for="exampleInputPassword1">パスワード</label>
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+			</div>
+
+			<a href="index.html" class="btn btn-info glyphicon glyphicon-off" role="button">ログイン</a>
+			
+		</form>
+	</div><!-- /container -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

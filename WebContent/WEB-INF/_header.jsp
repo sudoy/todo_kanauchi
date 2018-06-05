@@ -1,4 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -12,7 +14,6 @@
 
 	</head>
 	<body>
-
 <nav class="navbar navbar-default">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -24,6 +25,20 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.html">Todoリスト</a>
+		</div>
+		
+		<c:if test="${userdata ne null}">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="bottun" aria-haspopup="true" aria-expanded="false">
+				${userdata.name}
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				<li><a href="logout.html">ログアウト</a></li>
+				</ul>
+			</li>
+		</ul>
+		</c:if>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

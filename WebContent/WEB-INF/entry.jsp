@@ -65,8 +65,8 @@
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<a href="index.html" class="btn btn-default"><span
-				class="glyphicon glyphicon" aria-hidden="true"></span>キャンセル</a> <input
-				type="submit" class="btn btn-primary" value="追加" />
+				class="glyphicon glyphicon" aria-hidden="true"></span>キャンセル</a> 
+				<input type="submit" class="btn btn-primary" value="追加" />
 		</div>
 	</div>
 </form>

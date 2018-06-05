@@ -17,23 +17,32 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import todo.utils.DBUtils;
+import todo.utils.HTMLUtils;
 
 @WebServlet("/entry.html")
 public class EntryServlet extends HttpServlet {
-	//doget----------------------------------------------
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		//ログインチェック
+		if(!HTMLUtils.checkLogin(req, resp)) {
+			return;
+		}
 
 		getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp")
 				.forward(req, resp);
 
 	}
 
-	//dopost-----------------------------------------------
-
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		//ログインチェック
+		if(!HTMLUtils.checkLogin(req, resp)) {
+			return;
+		}
+		
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 
@@ -74,7 +83,6 @@ public class EntryServlet extends HttpServlet {
 			List<String> successes = new ArrayList<>();
 			successes.add("登録しました。");
 			session.setAttribute("successes", successes);
-
 			resp.sendRedirect("index.html");
 
 		} catch (Exception e) {
@@ -90,7 +98,6 @@ public class EntryServlet extends HttpServlet {
 			} catch (Exception e) {
 			}
 		}
-
 	}
 
 	private List<String> validate(String title, String deadline, String star) {

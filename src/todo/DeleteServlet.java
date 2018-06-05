@@ -15,15 +15,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import todo.utils.DBUtils;
+import todo.utils.HTMLUtils;
 
 @WebServlet("/delete.html")
 public class DeleteServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		//ログインチェック
+		if(!HTMLUtils.checkLogin(req, resp)) {
+			return;
+		}
 
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
+		
+		//reqの内容を変数に入れる
 		String id = req.getParameter("id");
 
 		//バリデーションチェック

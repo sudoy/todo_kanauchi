@@ -20,12 +20,18 @@ import javax.servlet.http.HttpSession;
 
 import todo.beans.Todo;
 import todo.utils.DBUtils;
+import todo.utils.HTMLUtils;
 
 @WebServlet("/update.html")
 public class UpdateServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		//ログインチェック
+		if(!HTMLUtils.checkLogin(req, resp)) {
+			return;
+		}
 
 		req.setCharacterEncoding("utf-8");
 		Connection con = null;
